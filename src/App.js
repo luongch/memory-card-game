@@ -6,14 +6,14 @@ import React, {useEffect, useState} from "react"
 
 function App() {
   // var files = fs.readdirSync('./images/');
-  let myImage = document.createElement("img")
-  let images2 = fetch("/home/chris/repos/memory-card-game/public/images")
-  .then((response) => response)
-  .then((myBlob) => {
-    console.log(myBlob.body)
-    // myImage.src = URL.createObjectURL(myBlob);
-  });
-  console.log(images2)
+  // let myImage = document.createElement("img")
+  // let images2 = fetch("/home/chris/repos/memory-card-game/public/images")
+  // .then((response) => response)
+  // .then((myBlob) => {
+  //   console.log(myBlob.body)
+  //   // myImage.src = URL.createObjectURL(myBlob);
+  // });
+  // console.log(images2)
 
   let images = [
     'images/03-Shaking.gif',
@@ -30,16 +30,27 @@ function App() {
     'images/35-Birthday.gif'
   ]
   const [cards, setCards] = useState(images);
-
-  const shuffleArray = () => {
-
+  const [score, setScore] = useState({
+    "current": 0,
+    "max": 0
+  });
+  const shuffleArray = (array) => {
+    for (var i = array.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+    }
+  }
+  const handleClick = () => {
+    console.log("I have been clicked")
   }
 
   return (
     <div>
       {/* <img src="images/20-Knocking.gif" alt="" /> */}
       <Scoreboard></Scoreboard>
-      <Gameboard cards={cards}></Gameboard>
+      <Gameboard cards={cards} handleClick={handleClick}></Gameboard>
     </div>
   );
 }
