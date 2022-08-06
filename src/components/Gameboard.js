@@ -5,9 +5,9 @@ function Gameboard(props) {
     return (
       <div className="gameBoard">
         {cards.map(card => {
-            let source = card
+
             return <div className='card' onClick={handleClick}>
-                <img alt="test" src={source} width="200px"></img>
+                <img alt={card.alt} src={card.src} width="200px"></img>
             </div>
         })}
       </div>

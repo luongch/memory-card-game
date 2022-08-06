@@ -1,7 +1,11 @@
 
-function Scoreboard() {
+function Scoreboard(props) {
+    let {score} = props;
     return (
-      <div>Scoreboard2</div>
+      <div>
+        <div>Current: {score.current}</div>
+        <div>Highest: {score.highest}</div>
+      </div>
     );
   }
   
